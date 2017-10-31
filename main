@@ -1,0 +1,70 @@
+ /* Name: Wally R.
+ /* Date: 3/28
+ /* Program Name: Individualw3
+ /* Description: this is week 3 assignment. The application will work with week2 assignment. It will ask the user
+ /* 			 to input the sales, and it will require the user to reach the 80% of the targeted sales which is 100,000
+ /*				 and then it will calculate the 3%. Another aspect, it will increase 1.5% additional to the 3%. This will be  
+ /*				 displayed. Then at the end, should also display a table of potential total annual compensation that the user
+ /* 			 could have earned, in $5000 increments above the user's annual sales, until it reaches 50% above the user's 
+ /* 			 annual sales.
+ */
+  
+import java.util.Scanner;				 
+
+public class individualw3
+{
+	public static void main(String[] args)
+	{
+		// These are the variables will be to calculate this exercise.
+		// sales will be able to be inputed by the user. Total is a fixed amount of 45000 of fixedSalary
+		// commissionR will calculate the 3 percent of the sales. accelerationR 1.45% will be applied once
+		// requirement is met. total and finalTotal is 0 so we can sum everything in that operation as well 
+		// as declare it as a variable. finalC is 100,000 for the graph displaying the projection
+		
+		double sales = 0;
+		double fixedSalary = 45000;
+		double commissionR = .03;
+		double accelerationR = 1.45;
+		double total = 0;
+		double finalTotal = 0;
+		double finalC = 100000;
+		
+		// The sequence will prompt the user for the amount of sales, and then it will display the prompt.  
+		// Then it will do the the if statement in which it will do it if 80% of the targeted commission is met.
+		// If not it will continue with displaying the calculation without the commission rate and acceleration 
+		// rate. Then it will do a loop showing the projected commissions. The additional class will be displayed 
+		// in between the final the final graph; which is the loop.
+	
+		 System.out.println(" Enter the sales: ");
+		    
+		    Scanner input = new Scanner(System.in);
+		    sales = input.nextDouble();
+		    
+		      
+		 		           
+		    if (sales >= 80000)
+		    	{
+		        	total = sales*commissionR*accelerationR + fixedSalary;
+		        	System.out.println("This is your total " + total);
+		        }
+		    else
+		        {
+		        	total = fixedSalary;
+		        	System.out.println("This is your total " + total);
+		        } 
+		    individualw3additionclass display = new individualw3additionclass();
+		    System.out.println("This will show your projections: ");
+		    display.restofprogram();
+		    do 
+		        {    
+		    	   total = finalTotal;
+		    	   finalC = finalC + 5000;
+		           finalTotal = finalC*commissionR*accelerationR + fixedSalary;
+		           System.out.println(finalC + "\t\t" + finalTotal);		          		     	    
+		   	    }
+				
+		    while (finalC <= (accelerationR*sales));
+		    display.restofprogram(); 
+		  		    	  	   
+	}   		
+}		    		
